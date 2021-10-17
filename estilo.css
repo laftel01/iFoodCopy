@@ -48,6 +48,23 @@ body {
     position: relative;
 }
 
+.landing-v2-address-search {
+    padding-top: 83px;
+    width: 100%;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.landing-v2-address-search__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 @media only screen and (min-width: 768px) {
     .landing_header_container {
         grid-template-columns: 40px 1fr 114px 104px;
@@ -60,6 +77,10 @@ body {
     }
     .landing-v2-multi-categories-big-link__title {
         font-size: 1.5rem;
+    }
+    .landing-v2-address-search__form {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -75,16 +96,6 @@ body {
     .landing-v2-multi-categories-big-link__title {
         font-size: 2.25rem;
     }
-}
-
-.landing-v2-address-search {
-    padding-top: 83px;
-    width: 100%;
-    background-color: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
 }
 
 .landing-v2-header__nav {
@@ -304,6 +315,48 @@ body {
     background-color: #8C60C5;
 }
 
+.landing-v2-multi-categories-big-link__link--restaurant {
+    background-color: #cc1825;
+}
+
+.landing-v2-multi-categories-big-link__link--market {
+    background-color: #9eb53e;
+}
+
+.landing-v2-multi-categories-big-link__icon g {
+    stroke-width: 10px;
+}
+
+.landing-v2-multi-categories-small-link__icon g {
+    stroke-width: 15px;
+}
+
+.landing-v2-multi-categories-big-link__icon svg {
+    fill: #ffffff;
+    color: #ffffff;
+    width: 14px;
+    height: 10px;
+}
+
+.landing-v2-multi-categories-small-link__icon svg {
+    margin-left: 5px;
+    color: #ea1d2c;
+    font-weight: bold;
+    width: 8px;
+}
+
+.landing-v2-multi-categories-big-link__icon {
+    display: flex;
+}
+
+.icon-marmita {
+    position: relative
+}
+
+.icon-marmita svg [stroke="#3F3E3E"] {
+    stroke: currentColor;
+}
+
 .landing-v2-multi-categories-small-link__image-wrapper {
     margin: 0;
     padding: 0;
@@ -344,22 +397,16 @@ body {
     transform: translateX(50%);
 }
 
-@media only screen and (min-width: 960x) {
-    .landing-v2-multi-categories-small-link__image-wrapper {
-        width: 188px;
-        height: 47px;
-    }
-    .landing-v2-multi-categories-big-link__link {
-        width: 146px;
-        font-weight: 500;
-        font-size: 1rem;
-    }
-    .landing-v2-multi-categories__main-categories {
-        height: 214px;
-    }
-    .landing-v2-multi-categories-small-link__image--drinks {
-        width: 140px;
-    }
+.landing-v2-multi-categories-small-link {
+    height: 85px;
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform ease-out 0.2s;
 }
 
 .landing-v2-multi-categories__carousel {
@@ -371,6 +418,15 @@ body {
     position: relative;
     margin: 18px 0 25px 0;
     transition: opacity 1.5s ease;
+}
+
+.landing-v2-multi-categories-small-link__title {
+    margin: 10px 0 0 0;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.875rem;
+    display: flex;
+    color: #1a1a1a;
 }
 
 @media only screen and (min-width: 786px) {
@@ -408,6 +464,38 @@ body {
     }
     .landing-v2-multi-categories-small-link__image--drinks {
         width: 120px;
+    }
+    .landing-v2-multi-categories-small-link {
+        height: 130px;
+        margin: 0;
+    }
+    .landing-v2-multi-categories-small-link__title {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .landing-v2-multi-categories-small-link__title {
+        margin-top: 12px;
+    }
+    .landing-v2-multi-categories-small-link__image-wrapper {
+        width: 188px;
+        height: 47px;
+    }
+    .landing-v2-multi-categories-big-link__link {
+        width: 146px;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    .landing-v2-multi-categories__main-categories {
+        height: 214px;
+    }
+    .landing-v2-multi-categories-small-link__image--drinks {
+        width: 140px;
+    }
+    .landing-v2-multi-categories-small-link {
+        height: 160px;
     }
 }
 
@@ -464,14 +552,7 @@ body {
 
 .landing-v2-header__sing-in,
 .landing-v2-header__sing-up {
-    height: 34px;
-    border-radius: 6px;
-    padding: 0;
-}
-
-.landing-v2-header__sing-in,
-.landing-v2-header__sing-up {
-    height: 34px;
+    height: 44px;
     border-radius: 6px;
     padding: 0;
 }
