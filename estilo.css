@@ -576,6 +576,34 @@ body {
     box-sizing: border-box;
 }
 
+.login_bar {
+    /*display: none;*/
+    position: absolute;
+    width: 400px;
+    right: 0;
+    transform: scale(1) translateX(400px);
+    transition: all linear 300ms;
+    height: 100%;
+    z-index: 10000;
+    background-color: #ddd;
+    padding: 5px;
+    box-shadow: 2px 3px #ccc;
+    border-radius: 2px;
+}
+
+.login_bar.shown {
+    display: block;
+    right: 0;
+    transform: scale(1) translateX(0);
+}
+
+.xbutton {
+    position: absolute;
+    right: 0;
+    border: transparent;
+    font-size: large;
+}
+
 @font-face {
     font-family: "SulSans";
     src: url("SulSans-Regular.woff2") format("woff2"), url("SulSans-Regular.woff") format("woff");
