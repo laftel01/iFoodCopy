@@ -1,5 +1,0 @@
-ID do cliente 																				exFk5WygRgptu6snrApmhkAuKzQ_lpmaw01k1ElXPl0
-
-URIs de redirecionamento 	
-
-    https://laftel01.github.io/iFoodCopy/
