@@ -73,7 +73,7 @@
                     </canvas>
                     <span class="icon-marmita icon-marmita--new-menu ">
                         <svg width="22 " height="18 "
-                            viewBox="0 0 22 18 " fill="none " xmlns="http://www.w3.org/2000/svg ">
+                            viewBox="0 0 22 18 " fill="none " xmlns="https://www.w3.org/2000/svg ">
                             <rect width="22 " height="2 " rx="1 " fill="#717171 "></rect>
                             <rect y="8 " width="22 " height="2 " rx="1 " fill="#717171 "></rect>
                             <rect y="16 " width="22 " height="2 " rx="1 " fill="#717171 "></rect>
@@ -83,7 +83,7 @@
             </div>
             <div class="landing-v2-menu_large ">
                 <span class="icon-marmita icon-marmita--logo-ifood-plain icon-brand icon-brand--primary ">
-                    <svg width="80 " height="43 " viewBox="0 0 80 43 " fill="none " xmlns="http://www.w3.org/2000/svg ">
+                    <svg width="80 " height="43 " viewBox="0 0 80 43 " fill="none " xmlns="https://www.w3.org/2000/svg ">
                         <path d="M0 24.258h6.09L9.498 7.472h-6.09L0 24.258zM3.947 4.836h6.087L11.016 0H4.922l-.975 4.836zM8.498 28.985h6.09l3.695-18.167h4.444l.7-3.346h-4.482l.154-.776c.286-1.431.751-3.096 3.047-3.096 1.361 0 2.665.148 3.93.68L26.77.744A13.22
             13.22 0 0 0 22.381 0c-4.894 0-8.265 2.914-9.499 7.472h-2.114l-.662 3.346h2.084L8.498 28.985z "></path>
                         <path d="M27.79 24.633c7.19 0 12.18-6.569 12.18-11.927 0-3.902-3.688-5.608-7.195-5.608-7.89 0-12.183 7.063-12.183 11.927 0 3.902 3.726 5.608 7.198 5.608zM47 24.633c7.192 0 12.181-6.569 12.181-11.927 0-3.902-3.696-5.608-7.199-5.608-7.886
@@ -158,7 +158,7 @@
             <p class="landing-v2-address-search__description landing-v2-address-search__text ">O que você precisa está aqui. Peça e receba onde estiver.</p>
             <div class="landing-v2-address-search__form ">
                 <div class="landing-v2-address-search__input-wrapper landing-v2-address-search__form-field autocomplete">
-                    <svg class="landing-v2-address-search__pin-icon " width="18 " height="19 " viewBox="0 0 18 19 " fill="none " xmlns="http://www.w3.org/2000/svg
+                    <svg class="landing-v2-address-search__pin-icon " width="18 " height="19 " viewBox="0 0 18 19 " fill="none " xmlns="https://www.w3.org/2000/svg
             "><path d="M8.835 17.274c-.555 0-1.058-.324-1.313-.855L4.305 9.635a5.985 5.985 0 0 1 .105-5.289c.81-1.56 2.22-2.557 3.855-2.731.367-.04.757-.04 1.125 0 1.635.174 3.037 1.172 3.855 2.731a5.96 5.96 0 0 1 .105 5.289.556.556 0 0 1-.758.269.62.62 0 0 1-.255-.8
             4.726 4.726 0 0 0-.09-4.188c-.607-1.211-1.695-1.987-2.962-2.121a4.274 4.274 0 0 0-.9 0c-1.26.134-2.348.91-2.978 2.121a4.726 4.726 0 0 0-.082 4.188l3.217 6.785c.083.174.24.198.3.198s.218-.016.3-.198l1.613-3.412a.558.558 0 0 1 .757-.27.62.62 0 0
             1 .255.8l-1.612 3.412c-.255.523-.758.855-1.32.855z " fill="currentColor "></path><path d="M8.835 9.555c-1.275 0-2.317-1.1-2.317-2.446 0-1.354 1.042-2.446 2.317-2.446 1.275 0 2.318 1.1 2.318 2.446.007 1.354-1.035 2.446-2.318 2.446zm0-3.705c-.66
@@ -180,7 +180,7 @@
             var xmlhttp = new XMLHttpRequest();
             nomeDaCidade = search_field.value;
             nomeDaCidade = nomeDaCidade.replace(" ", "%20");
-            xmlhttp.open('GET', 'http://api.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
+            xmlhttp.open('GET', 'https://api.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                     let response = JSON.parse(xmlhttp.responseText);
@@ -254,7 +254,7 @@
                             <figure class="landing-v2-multi-categories-big-link__image-container "><img class="landing-v2-multi-categories-big-link__image landing-v2-multi-categories-big-link__image--restaurant " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/restaurant.png
             " alt="Ver opções "></figure>
                             <div class="landing-v2-multi-categories-big-link__link landing-v2-multi-categories-big-link__link--restaurant ">Ver opções<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-big-link__icon
-            "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97
+            "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97
             69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></div>
                         </div>
                     </div>
@@ -267,7 +267,7 @@
                             <figure class="landing-v2-multi-categories-big-link__image-container "><img class="landing-v2-multi-categories-big-link__image landing-v2-multi-categories-big-link__image--market " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/market.png
             " alt="Buscar lojas "></figure>
                             <div class="landing-v2-multi-categories-big-link__link landing-v2-multi-categories-big-link__link--market ">Buscar lojas<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-big-link__icon
-            "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97
+            "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97
             69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></div>
                         </div>
                     </div>
@@ -278,25 +278,25 @@
             <div class="landing-v2-multi-categories-small-link ">
                 <figure class="landing-v2-multi-categories-small-link__image-wrapper landing-v2-multi-categories-small-link__image-wrapper--drinks "><img class="landing-v2-multi-categories-small-link__image landing-v2-multi-categories-small-link__image--drinks
             " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/drinks.png " alt="Bebidas "></figure>
-                <p class="landing-v2-multi-categories-small-link__title ">Bebidas<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg
+                <p class="landing-v2-multi-categories-small-link__title ">Bebidas<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg
             "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97 69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></p>
             </div>
             <div class="landing-v2-multi-categories-small-link ">
                 <figure class="landing-v2-multi-categories-small-link__image-wrapper landing-v2-multi-categories-small-link__image-wrapper--pharmacy "><img class="landing-v2-multi-categories-small-link__image landing-v2-multi-categories-small-link__image--pharmacy
             " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/pharmacy.png " alt="Farmácia "></figure>
-                <p class="landing-v2-multi-categories-small-link__title ">Farmácia<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg
+                <p class="landing-v2-multi-categories-small-link__title ">Farmácia<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg
             "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97 69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></p>
             </div>
             <div class="landing-v2-multi-categories-small-link ">
                 <figure class="landing-v2-multi-categories-small-link__image-wrapper landing-v2-multi-categories-small-link__image-wrapper--express "><img class="landing-v2-multi-categories-small-link__image landing-v2-multi-categories-small-link__image--express
             " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/express.png " alt="Express "></figure>
-                <p class="landing-v2-multi-categories-small-link__title ">Express<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg
+                <p class="landing-v2-multi-categories-small-link__title ">Express<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg
             "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97 69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></p>
             </div>
             <div class="landing-v2-multi-categories-small-link ">
                 <figure class="landing-v2-multi-categories-small-link__image-wrapper landing-v2-multi-categories-small-link__image-wrapper--petshop "><img class="landing-v2-multi-categories-small-link__image landing-v2-multi-categories-small-link__image--petshop
             " src="https://static-images.ifood.com.br/image/upload/f_auto/webapp/landingV2/petshop.png " alt="Pet shop "></figure>
-                <p class="landing-v2-multi-categories-small-link__title ">Pet shop<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="http://www.w3.org/2000/svg
+                <p class="landing-v2-multi-categories-small-link__title ">Pet shop<span class="icon-marmita icon-marmita--arrow-right-thin landing-v2-multi-categories-small-link__icon "><svg width="48 " height="48 " viewBox="0 0 48 48 " xmlns="https://www.w3.org/2000/svg
             "><g transform="translate(-97 -69) " stroke="#3F3E3E " stroke-width="3 " fill="none " fill-rule="evenodd " stroke-linecap="round "><g id="Seta-voltar " transform="translate(97 69) "><path id="Path-6 " transform="rotate(-90 23.5 23.5) " d="M6 16l17.5 15L41 16 "></path></g></g></svg></span></p>
             </div>
         </div>
