@@ -200,7 +200,7 @@
                         suggestionItems.addEventListener("click", function(e) {
                             /*insert the value for the autocomplete text field:*/
                             search_field.value = this.getElementsByTagName("input")[0].value;
-                            var url = 'https://google.com/maps/search/' + nomeDaCidade;
+                            var url = 'https://google.com/maps/search/' + search_field.value;
                             window.open(url, '_blank');
                             /*close the list of autocompleted values,
                             (or any other open lists of autocompleted values:*/
@@ -209,6 +209,13 @@
                         suggestionBox.appendChild(suggestionItems);
                         /*append the DIV element as a child of the autocomplete container:*/
                     }
+                    suggestionItems = document.createElement("div");
+                    suggestionItems.innerHTML = search_field.value;
+                    suggestionItems.addEventListener("click", function(e) {
+                        closeAllLists();
+                    });
+                    suggestionBox.appendChild(suggestionItems);
+
                     suggestionItems = document.createElement("div");
                     suggestionItems.innerHTML = "Fechar";
                     suggestionItems.addEventListener("click", function(e) {
