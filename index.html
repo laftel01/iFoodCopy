@@ -180,7 +180,7 @@
             var xmlhttp = new XMLHttpRequest();
             nomeDaCidade = search_field.value;
             nomeDaCidade = nomeDaCidade.replace(" ", "%20");
-            xmlhttp.open('GET', 'https://api.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
+            xmlhttp.open('GET', 'https://secure.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                     let response = JSON.parse(xmlhttp.responseText);
