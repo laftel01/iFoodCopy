@@ -8,6 +8,7 @@
     <link rel="preload" as="font" href="SulSans-Light.woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="SulSans-Regular.woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="SulSans-Medium.woff2" crossorigin="anonymous">
+    <script src="jquery.js"></script>@
 </head>
 
 <body>
@@ -17,23 +18,48 @@
         <input class="text_field" type="password" placeholder="Senha" />
         <br>
         <button class="btn btn--default btn--size-m landing-v2-header__sing-in login_enter">Entrar</button>
+        <div id="MsgErroLogin" style="color: #c00;">
+
+        </div>
         <script type="text/javascript" charset="utf-8">
             var login_field = document.querySelectorAll(".text_field")[0];
             var pass_field = document.querySelectorAll(".text_field")[1];
             login_field.value = window.localStorage.getItem("login");
             pass_field.value = window.localStorage.getItem("pass");
             var entrar_button = document.querySelector(".login_enter");
+            var msgErroLogin = document.querySelector("#MsgErroLogin");
+            var token = window.localStorage.getItem('token');
+
             entrar_button.addEventListener("click", function() {
+                var token = window.localStorage.getItem('token');
                 if (login_field.value.length <= 3 || pass_field.value.length <= 3) {
-                    msgErroLogin = document.createElement("div");
-                    msgErroLogin.style.color = "#800";
                     msgErroLogin.innerHTML = "O login e a senha precisam ter mais de 3 caracteres";
-                    var login_bar = document.querySelector(".login_bar");
-                    login_bar.appendChild(msgErroLogin);
                 } else {
                     window.localStorage.setItem("login", login_field.value);
                     window.localStorage.setItem("pass", pass_field.value);
+                    msgErroLogin.innerHTML = "";
+                    if (token != null && token != '') {
+                        window.localStorage.removeItem('token');
+                        token = window.localStorage.getItem('token');
+                    } else {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'https://reqres.in/api/login', true);
+                        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                let response = JSON.parse(xhr.responseText);
+                                msgErroLogin.innerHTML = 'Login feito';
+                                window.localStorage.setItem('token', response['token']);
+                                menuLogin();
+                            } else if (xhr.readyState === 4) {
+                                msgErroLogin.innerHTML = xhr.responseText + " Erro n0: " + xhr.status;
+                            }
+                        }
+
+                        xhr.send('email=' + login_field.value + '&password=' + pass_field.value);
+                    };
                 }
+                menuLogin();
             });
         </script>
     </div>
@@ -105,8 +131,23 @@
                         login_bar.className = "login_bar shown"
                     else
                         login_bar.className = "login_bar"
-                    console.log("clicou");
                 })
+
+                function menuLogin() {
+                    token = window.localStorage.getItem('token');
+                    if (token != null && token != '') {
+                        buttonEntrar.querySelector('span').innerHTML = "Menu";
+                        entrar_button.innerHTML = 'Sair';
+                        login_field.style.display = 'none';
+                        pass_field.style.display = 'none';
+                    } else {
+                        buttonEntrar.querySelector('span').innerHTML = "Entrar";
+                        entrar_button.innerHTML = 'Entrar';
+                        login_field.style.display = 'block';
+                        pass_field.style.display = 'block';
+                    }
+                }
+                menuLogin();
             </script>
         </header>
     </section>

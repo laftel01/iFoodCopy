@@ -581,7 +581,7 @@ body {
     position: absolute;
     width: 400px;
     right: 0;
-    transform: scale(1) translateX(400px);
+    transform: scaleX(0) translateX(400px);
     transition: all linear 300ms;
     height: 100%;
     z-index: 10000;
