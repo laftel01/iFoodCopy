@@ -31,7 +31,7 @@
             var token = window.localStorage.getItem('token');
 
             entrar_button.addEventListener("click", function() {
-                var token = window.localStorage.getItem('token');
+                token = window.localStorage.getItem('token');
                 if (login_field.value.length <= 3 || pass_field.value.length <= 3) {
                     msgErroLogin.innerHTML = "O login e a senha precisam ter mais de 3 caracteres";
                 } else {
@@ -175,65 +175,102 @@
         var suggestionBox, suggestionItems;
         var cidades = new Array(10);
         var nomeDaCidade;
-        search_button.addEventListener("click", function() {
+
+        function search_click() {
             closeAllLists();
-            var xmlhttp = new XMLHttpRequest();
-            nomeDaCidade = search_field.value;
-            nomeDaCidade = nomeDaCidade.replace(" ", "%20");
-            xmlhttp.open('GET', 'https://secure.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    let response = JSON.parse(xmlhttp.responseText);
-                    for (let index = 0; index < cidades.length; index++) {
-                        cidades[index] = response['geonames'][index]['name'] + ", " + response['geonames'][index]['adminName1'] + ", " + response['geonames'][index]['countryName'];
-                    }
+            token = window.localStorage.getItem('token');
+            if (token != null && token != '') {
+                let sfv = search_field.value;
+                if (sfv.charAt(1).match(/[a-z]/i) == null) {
                     suggestionBox = document.createElement("div");
                     suggestionBox.setAttribute("id", this.id + "autocomplete-list");
                     suggestionBox.setAttribute("class", "autocomplete-items");
-                    for (let index = 0; index < cidades.length; index++) {
-                        suggestionItems = document.createElement("div");
-                        /*make the matching letters bold:*/
-                        suggestionItems.innerHTML = cidades[index];
-                        /*insert a input field that will hold the current array item's value:*/
-                        suggestionItems.innerHTML += "<input type='hidden' value='" + cidades[index] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        suggestionItems.addEventListener("click", function(e) {
-                            /*insert the value for the autocomplete text field:*/
-                            search_field.value = this.getElementsByTagName("input")[0].value;
-                            var url = 'https://google.com/maps/search/' + search_field.value;
-                            window.open(url, '_blank');
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        suggestionBox.appendChild(suggestionItems);
-                        /*append the DIV element as a child of the autocomplete container:*/
-                    }
                     suggestionItems = document.createElement("div");
-                    suggestionItems.innerHTML = search_field.value;
+                    suggestionItems.innerHTML = "Por favor, insira um nome válido para a busca.";
                     suggestionItems.addEventListener("click", function(e) {
                         closeAllLists();
-                    });
-                    suggestionItems.addEventListener("click", function(e) {
-                        var url = 'https://google.com/maps/search/' + search_field.value;
-                        window.open(url, '_blank');
-                        /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-                        closeAllLists();
+                        search_field.focus();
                     });
                     suggestionBox.appendChild(suggestionItems);
-
-                    suggestionItems = document.createElement("div");
-                    suggestionItems.innerHTML = "Fechar";
-                    suggestionItems.addEventListener("click", function(e) {
-                        closeAllLists();
-                    });
-                    suggestionBox.appendChild(suggestionItems);
-
                     search_button.parentNode.appendChild(suggestionBox);
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    nomeDaCidade = search_field.value;
+                    nomeDaCidade = nomeDaCidade.replace(" ", "%20");
+                    xmlhttp.open('GET', 'https://secure.geonames.org/searchJSON?username=carloshenutfpr&q=' + nomeDaCidade + '&maxrows=10', true);
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                            let response = JSON.parse(xmlhttp.responseText);
+                            for (let index = 0; index < cidades.length; index++) {
+                                cidades[index] = response['geonames'][index]['name'] + ", " + response['geonames'][index]['adminName1'] + ", " + response['geonames'][index]['countryName'];
+                            }
+                            suggestionBox = document.createElement("div");
+                            suggestionBox.setAttribute("id", this.id + "autocomplete-list");
+                            suggestionBox.setAttribute("class", "autocomplete-items");
+                            for (let index = 0; index < cidades.length; index++) {
+                                suggestionItems = document.createElement("div");
+                                /*make the matching letters bold:*/
+                                suggestionItems.innerHTML = cidades[index];
+                                /*insert a input field that will hold the current array item's value:*/
+                                suggestionItems.innerHTML += "<input type='hidden' value='" + cidades[index] + "'>";
+                                /*execute a function when someone clicks on the item value (DIV element):*/
+                                suggestionItems.addEventListener("click", function(e) {
+                                    /*insert the value for the autocomplete text field:*/
+                                    search_field.value = this.getElementsByTagName("input")[0].value;
+                                    var url = 'https://google.com/maps/search/' + search_field.value;
+                                    window.open(url, '_blank');
+                                    /*close the list of autocompleted values,
+                                    (or any other open lists of autocompleted values:*/
+                                    closeAllLists();
+                                });
+                                suggestionBox.appendChild(suggestionItems);
+                                /*append the DIV element as a child of the autocomplete container:*/
+                            }
+                            suggestionItems = document.createElement("div");
+                            suggestionItems.innerHTML = search_field.value;
+                            suggestionItems.addEventListener("click", function(e) {
+                                closeAllLists();
+                            });
+                            suggestionItems.addEventListener("click", function(e) {
+                                var url = 'https://google.com/maps/search/' + search_field.value;
+                                window.open(url, '_blank');
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
+                                closeAllLists();
+                            });
+                            suggestionBox.appendChild(suggestionItems);
+
+                            suggestionItems = document.createElement("div");
+                            suggestionItems.innerHTML = "Fechar";
+                            suggestionItems.addEventListener("click", function(e) {
+                                closeAllLists();
+                            });
+                            suggestionBox.appendChild(suggestionItems);
+
+                            search_button.parentNode.appendChild(suggestionBox);
+                        }
+                    };
+                    xmlhttp.send();
                 }
-            };
-            xmlhttp.send();
+            } else {
+                suggestionBox = document.createElement("div");
+                suggestionBox.setAttribute("id", this.id + "autocomplete-list");
+                suggestionBox.setAttribute("class", "autocomplete-items");
+                suggestionItems = document.createElement("div");
+                suggestionItems.innerHTML = "É necessário fazer o login para realizar a busca";
+                suggestionItems.addEventListener("click", function(e) {
+                    closeAllLists();
+                    login_bar.className = "login_bar shown";
+                });
+                suggestionBox.appendChild(suggestionItems);
+                search_button.parentNode.appendChild(suggestionBox);
+            }
+        }
+        search_button.addEventListener("click", function() {
+            search_click()
+        });
+        search_field.addEventListener("keyup", function() {
+            if (event.keyCode == 13) search_click();
         });
 
         function closeAllLists(elmnt) {
