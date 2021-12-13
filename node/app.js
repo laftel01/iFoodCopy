@@ -5,8 +5,7 @@ let client = require('mongodb').MongoClient,
     path = require('path'),
     app = express();
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = 80;
 var db;
 
 app.set('view engine', 'hbs');
@@ -20,7 +19,7 @@ app.use(require("express-session")({
     cookie: { secure: false }
 }));
 
-client.connect('mongodb://localhost:27017/mongo-test', { useNewUrlParser: true }, function(err, client) {
+client.connect('mongodb+srv://carlosH:Hq8k4FMHH4ggF7A@eucomida.yqjer.mongodb.net/test', { useNewUrlParser: true }, function(err, client) {
     if (err) throw err;
     db = client.db('mongo-test');
 });
@@ -31,17 +30,15 @@ app.get('/', (req, res) => {
         db.collection('entradas').find({ login: req.session.login }).toArray(function(err, db_entradas) {
             if (err) console.log(err);
             console.log(db_entradas);
-
             let entradas = [];
-            if (db_entradas && db_entradas._id)
+            if (db_entradas && db_entradas._id) {
                 for (let index = 0; index < db_entradas.length; index++) {
-                    entradas[index] = db_entradas.texto;
+                    entradas[index] = db_entradas[index].texto;
                 }
-            res.render('index', { entradas: entradas });
+                res.render('index', { entradas: entradas });
+            } else { res.render('index', { entradas: entradas }); }
         });
-    }
-    //console.log(req.session.login);
-    //console.log(db_entradas);
+    } else { res.render('index'); }
 
 });
 
@@ -54,7 +51,6 @@ app.post('/login', (req, res) => {
         if (doc && doc._id) {
             if (pass == doc.pass) {
                 res.status(200);
-                console.log(req.session);
                 req.session.login = login;
 
                 console.log(req.session);
@@ -85,5 +81,18 @@ app.post('/registrar', (req, res) => {
         }
     });
 });
-
+app.post('/entradas', (req, res) => {
+    let texto = req.body.texto;
+    db.collection('entradas').insertOne({ login: req.session.login, texto: texto });
+    db.collection('entradas').find({ login: req.session.login }).toArray(function(err, db_entradas) {
+        if (err) console.log(err);
+        if (db_entradas && db_entradas._id) {
+            for (let index = 0; index < db_entradas.length; index++) {
+                res.status(200);
+                res.write("<li>" + db_entradas[index].texto + ": " + db_entradas[index].texto + "</li>");
+            }
+            res.end();
+        }
+    });
+});
 app.listen(port);
